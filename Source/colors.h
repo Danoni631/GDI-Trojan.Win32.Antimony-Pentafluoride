@@ -8,6 +8,7 @@
 #include "include.h"
 
 // THANKS FOR PANKOZA, JHOPRO AND FR4CTALZ
+// (sorry, i forgot Wipet)
 
 typedef struct
 {
