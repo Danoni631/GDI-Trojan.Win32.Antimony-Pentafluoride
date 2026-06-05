@@ -2,6 +2,7 @@
 
 #include "include.h"
 
+//SOUND THREADS
 namespace Bytebeats
 {
     DWORD WINAPI Sound1(LPVOID lpvd)
